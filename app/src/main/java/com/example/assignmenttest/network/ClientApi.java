@@ -5,7 +5,7 @@ import com.example.assignmenttest.data.CurrencyResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
-public interface clientApi {
-    @GET("/latest")
+public interface ClientApi {
+    @GET("latest")
     Call<CurrencyResponse> getCurrencyResponse();
 }

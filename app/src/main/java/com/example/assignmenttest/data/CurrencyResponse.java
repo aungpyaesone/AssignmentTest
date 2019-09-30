@@ -3,12 +3,13 @@ package com.example.assignmenttest.data;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 public class CurrencyResponse implements Serializable {
 
 	@SerializedName("rates")
-	private Rates rates;
+	private List<Rates> rates;
 
 	@SerializedName("description")
 	private String description;
@@ -19,11 +20,11 @@ public class CurrencyResponse implements Serializable {
 	@SerializedName("timestamp")
 	private String timestamp;
 
-	public void setRates(Rates rates){
+	public void setRates(List<Rates> rates){
 		this.rates = rates;
 	}
 
-	public Rates getRates(){
+	public List<Rates> getRates(){
 		return rates;
 	}
 
