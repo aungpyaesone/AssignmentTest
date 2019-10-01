@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.assignmenttest.R;
 import com.example.assignmenttest.activity.MainActivity;
 import com.example.assignmenttest.data.Rates;
+import com.example.assignmenttest.database.RatesData;
 import com.example.assignmenttest.delegate.ItemTap;
 import com.example.assignmenttest.viewholder.MyViewHolder;
 

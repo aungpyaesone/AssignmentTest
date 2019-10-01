@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assignmenttest.R;
 import com.example.assignmenttest.data.Rates;
+import com.example.assignmenttest.database.RatesData;
 import com.example.assignmenttest.delegate.ItemTap;
 
 import java.util.ArrayList;
@@ -25,7 +26,6 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tv_value)
     TextView tvValue;
 
-    private Rates rateData;
     private ItemTap delegate;
     public MyViewHolder(@NonNull View itemView, ItemTap delegate) {
         super(itemView);

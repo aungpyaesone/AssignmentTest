@@ -10,8 +10,9 @@ import com.example.assignmenttest.adapter.MyAdapter;
 import com.example.assignmenttest.data.CurrencyResponse;
 import com.example.assignmenttest.data.Rates;
 import com.example.assignmenttest.data.model.CurrencyModel;
+import com.example.assignmenttest.database.AppDatabase;
+import com.example.assignmenttest.database.RatesData;
 import com.example.assignmenttest.delegate.ItemTap;
-import com.example.assignmenttest.network.ServiceImpl;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -30,13 +31,10 @@ public class MainActivity extends BaseActivity implements ItemTap {
     RecyclerView recyclerView;
 
     private List<CurrencyResponse> currencyResponses;
-
-    private List<Rates>  ratesList;
+    private Rates rateData;
+    private RatesData data;
     private MyAdapter adapter;
     private CurrencyModel model;
-
-    private ServiceImpl service;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +49,7 @@ public class MainActivity extends BaseActivity implements ItemTap {
     private void init() {
         model = CurrencyModel.getObjInstance();
         currencyResponses = new ArrayList<>();
-        ratesList = new ArrayList<>();
-        service = new ServiceImpl();
+       // ratesList = new ArrayList<>();
     }
 
     private void setUpRecycler() {
@@ -75,7 +72,52 @@ public class MainActivity extends BaseActivity implements ItemTap {
 
     @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
     public void loadData(CurrencyResponse response) {
-        adapter.bindData(setData(response.getRates()));
+       // adapter.bindData(setData(response.getRates()));
+        rateData = response.getRates();
+        data = new RatesData();
+        data.setcHF(rateData.getCHF());
+        data.setzAR(rateData.getZAR());
+        data.setsAR(rateData.getSAR());
+        data.setiNR(rateData.getINR());
+        data.setvND(rateData.getVND());
+        data.setcNY(rateData.getCNY());
+        data.settHB(rateData.getTHB());
+        data.setaUD(rateData.getAUD());
+        data.setkRW(rateData.getKRW());
+        data.setiLS(rateData.getILS());
+        data.setnPR(rateData.getNPR());
+        data.setjPY(rateData.getJPY());
+        data.setbDT(rateData.getBDT());
+        data.setgBP(rateData.getGBP());
+        data.setkHR(rateData.getKHR());
+        data.setiDR( rateData.getIDR());
+        data.setpHP(rateData.getPHP());
+        data.setkRW(rateData.getKRW());
+        data.setrUB(rateData.getRUB());
+        data.sethKD(rateData.getHKD());
+        data.setrSD(rateData.getRSD());
+        data.seteUR(rateData.getEUR());
+        data.setdKK(rateData.getDKK());
+        data.setuSD(rateData.getUSD());
+        data.setmYR(rateData.getMYR());
+        data.setcAD(rateData.getCAD());
+        data.setnOK(rateData.getNOK());
+        data.seteGP(rateData.getEGP());
+        data.setsGD(rateData.getSGD());
+        data.setlKR(rateData.getLKR());
+        data.setcZK(rateData.getCZK());
+        data.setpKR(rateData.getPKR());
+        data.setlAK(rateData.getLAK());
+        data.setsEK(rateData.getSEK());
+        data.setkES(rateData.getKES());
+        data.setnZD(rateData.getNZD());
+        data.setbND(rateData.getBND());
+        data.setbRL(rateData.getBRL());
+
+        AppDatabase.getInstance(this).rateDao().insertRate(rateData);
+
+        RatesData rateList = AppDatabase.getInstance(this).rateDao().getAllRateData();
+        adapter.bindData(setData(rateList));
 
 
         CurrencyResponse stickyEvent = EventBus.getDefault().getStickyEvent(CurrencyResponse.class);
@@ -85,7 +127,7 @@ public class MainActivity extends BaseActivity implements ItemTap {
         }
     }
 
-    private List<String> setData(Rates rateData) {
+    private List<String> setData(RatesData rateData) {
         List<String> list = new ArrayList<>();
         list.add(rateData.getCHF()+" CHF");
         list.add(rateData.getZAR()+" ZAR");
@@ -97,9 +139,9 @@ public class MainActivity extends BaseActivity implements ItemTap {
         list.add(rateData.getAUD()+" AUD");
         list.add(rateData.getKRW()+" KRW");
         list.add(rateData.getILS()+" ILS");
-        list.add(rateData.getNPR()+" NPR");
+        list.add(rateData.getMPR()+" MPR");
         list.add(rateData.getJPY()+" JPY");
-        list.add(rateData.getBDT()+" BDT");
+      //  list.add(rateData.getBDT()+" BDT");
         list.add(rateData.getGBP()+" GBP");
         list.add(rateData.getKHR()+" KHR");
         list.add( rateData.getIDR()+" IDR");
@@ -139,6 +181,6 @@ public class MainActivity extends BaseActivity implements ItemTap {
 
     @Override
     public void touchItem(Rates rateData,int position) {
-        Toast.makeText(this, rateData.getAUD(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,rateData.getAUD(), Toast.LENGTH_SHORT).show();
     }
 }

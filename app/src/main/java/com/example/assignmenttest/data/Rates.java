@@ -469,7 +469,7 @@ public class Rates implements Serializable {
 	@Override
  	public String toString(){
 		return 
-			"Rates{" + 
+			"RatesData{" +
 			"cHF = '" + cHF + '\'' + 
 			",sAR = '" + sAR + '\'' + 
 			",zAR = '" + zAR + '\'' + 
