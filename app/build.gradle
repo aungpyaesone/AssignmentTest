@@ -30,14 +30,15 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    //EventBus
-    implementation 'org.greenrobot:eventbus:3.1.1'
 
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'androidx.room:room-runtime:2.0.0-beta01'
+    annotationProcessor 'androidx.room:room-compiler:2.0.0-beta01'
+
+    // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
-    implementation 'androidx.room:room-runtime:2.0.0-beta01'
-    annotationProcessor 'androidx.room:room-compiler:2.0.0-beta01'
 
     testImplementation 'junit:junit:4.12'
     implementation 'com.jakewharton:butterknife:10.1.0'

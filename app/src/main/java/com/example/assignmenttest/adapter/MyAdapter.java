@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
-    List<Rates> dataList;
+    List<String> dataList;
      Context context;
      ItemTap delegate;
 
@@ -41,11 +41,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         if(dataList!= null)
         {
-            holder.bindData(dataList.get(position));
+            holder.bindData( dataList.get(position));
         }
     }
 
-    public void bindData(List<Rates> data){
+    public void bindData(List<String> data){
         this.dataList = data;
         notifyDataSetChanged();
 

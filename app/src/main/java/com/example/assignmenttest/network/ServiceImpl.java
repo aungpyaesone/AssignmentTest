@@ -1,5 +1,6 @@
 package com.example.assignmenttest.network;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.assignmenttest.BuildConfig;
@@ -7,9 +8,7 @@ import com.example.assignmenttest.utils.AppConstats;
 import com.example.assignmenttest.data.CurrencyResponse;
 
 import org.greenrobot.eventbus.EventBus;
-
 import java.util.concurrent.TimeUnit;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -48,12 +47,15 @@ public class ServiceImpl implements DataAgent {
     @Override
     public void getData() {
         Call<CurrencyResponse> getCurrencyResponse = api.getCurrencyResponse();
+
+
         getCurrencyResponse.enqueue(new Callback<CurrencyResponse>() {
             @Override
             public void onResponse(Call<CurrencyResponse> call, Response<CurrencyResponse> response) {
+                Log.i("What the Fuck",response.body().toString());
                 if(response.isSuccessful()){
                     CurrencyResponse currencyData = response.body();
-                    if(currencyData != null)
+                   // Log.d("ddddd",currencyData.toString());
                     {
                         EventBus.getDefault().postSticky(currencyData);
                     }
@@ -65,7 +67,7 @@ public class ServiceImpl implements DataAgent {
             }
 
             @Override
-            public void onFailure(Call<CurrencyResponse> call, Throwable t) {
+           public void onFailure(Call<CurrencyResponse> call, Throwable t) {
                 EventBus.getDefault().postSticky(t.getMessage());
 
             }

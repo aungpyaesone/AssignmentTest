@@ -1,5 +1,6 @@
 package com.example.assignmenttest.viewholder;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.assignmenttest.R;
 import com.example.assignmenttest.data.Rates;
 import com.example.assignmenttest.delegate.ItemTap;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,9 +33,8 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this,itemView);
     }
 
-    public void bindData(Rates data){
-        this.rateData = data;
-        tvRate.setText(rateData.getAUD());
+    public void bindData(String str){
+     tvValue.setText(str);
 
     }
 }

@@ -121,6 +121,47 @@ public class Rates implements Serializable {
 	@SerializedName("BRL")
 	private String bRL;
 
+	public Rates(String cHF, String sAR, String zAR, String iNR, String vND, String cNY, String tHB, String aUD, String kRW, String iLS, String nPR, String jPY, String bDT, String gBP, String kHR, String iDR, String pHP, String kWD, String rUB, String hKD, String rSD, String eUR, String dKK, String uSD, String mYR, String cAD, String nOK, String eGP, String sGD, String lKR, String cZK, String pKR, String lAK, String sEK, String kES, String nZD, String bND, String bRL) {
+		this.cHF = cHF;
+		this.sAR = sAR;
+		this.zAR = zAR;
+		this.iNR = iNR;
+		this.vND = vND;
+		this.cNY = cNY;
+		this.tHB = tHB;
+		this.aUD = aUD;
+		this.kRW = kRW;
+		this.iLS = iLS;
+		this.nPR = nPR;
+		this.jPY = jPY;
+		this.bDT = bDT;
+		this.gBP = gBP;
+		this.kHR = kHR;
+		this.iDR = iDR;
+		this.pHP = pHP;
+		this.kWD = kWD;
+		this.rUB = rUB;
+		this.hKD = hKD;
+		this.rSD = rSD;
+		this.eUR = eUR;
+		this.dKK = dKK;
+		this.uSD = uSD;
+		this.mYR = mYR;
+		this.cAD = cAD;
+		this.nOK = nOK;
+		this.eGP = eGP;
+		this.sGD = sGD;
+		this.lKR = lKR;
+		this.cZK = cZK;
+		this.pKR = pKR;
+		this.lAK = lAK;
+		this.sEK = sEK;
+		this.kES = kES;
+		this.nZD = nZD;
+		this.bND = bND;
+		this.bRL = bRL;
+	}
+
 	public void setCHF(String cHF){
 		this.cHF = cHF;
 	}

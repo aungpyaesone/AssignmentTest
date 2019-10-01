@@ -9,7 +9,7 @@ import java.util.List;
 public class CurrencyResponse implements Serializable {
 
 	@SerializedName("rates")
-	private List<Rates> rates;
+	private Rates rates;
 
 	@SerializedName("description")
 	private String description;
@@ -20,11 +20,17 @@ public class CurrencyResponse implements Serializable {
 	@SerializedName("timestamp")
 	private String timestamp;
 
-	public void setRates(List<Rates> rates){
+    public CurrencyResponse(Rates rates, String description, String timestamp) {
+        this.rates = rates;
+        this.description = description;
+        this.timestamp = timestamp;
+    }
+
+    public void setRates(Rates rates){
 		this.rates = rates;
 	}
 
-	public List<Rates> getRates(){
+	public Rates getRates(){
 		return rates;
 	}
 
