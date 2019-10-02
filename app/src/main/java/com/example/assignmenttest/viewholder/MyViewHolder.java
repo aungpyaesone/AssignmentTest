@@ -1,19 +1,13 @@
 package com.example.assignmenttest.viewholder;
 
-import android.util.Log;
+
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.assignmenttest.R;
-import com.example.assignmenttest.data.Rates;
-import com.example.assignmenttest.database.RatesData;
 import com.example.assignmenttest.delegate.ItemTap;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

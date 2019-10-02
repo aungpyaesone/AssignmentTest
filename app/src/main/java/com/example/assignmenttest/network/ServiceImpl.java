@@ -1,9 +1,7 @@
 package com.example.assignmenttest.network;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import com.example.assignmenttest.BuildConfig;
+import com.example.assignmenttest.data.Rates;
 import com.example.assignmenttest.utils.AppConstats;
 import com.example.assignmenttest.data.CurrencyResponse;
 
@@ -20,7 +18,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceImpl implements DataAgent {
 
     private final ClientApi api;
-
     public ServiceImpl() {
         final OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder()
                 .connectTimeout(AppConstats.CONNECTION_TIME_OUT, TimeUnit.SECONDS)
@@ -47,16 +44,14 @@ public class ServiceImpl implements DataAgent {
     @Override
     public void getData() {
         Call<CurrencyResponse> getCurrencyResponse = api.getCurrencyResponse();
-
-
         getCurrencyResponse.enqueue(new Callback<CurrencyResponse>() {
             @Override
             public void onResponse(Call<CurrencyResponse> call, Response<CurrencyResponse> response) {
-                Log.i("What the Fuck",response.body().toString());
                 if(response.isSuccessful()){
                     CurrencyResponse currencyData = response.body();
-                   // Log.d("ddddd",currencyData.toString());
+                    if(currencyData != null)
                     {
+
                         EventBus.getDefault().postSticky(currencyData);
                     }
                 }
